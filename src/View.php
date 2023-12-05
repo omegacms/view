@@ -26,8 +26,8 @@ use Omega\Renderer\RendererInterface;
 /**
  * View class.
  *
- * The `View` class represents a view object in the Omega system. Instances of 
- * this class are used to handle view rendering using a rendering engine that 
+ * The `View` class represents a view object in the Omega system. Instances of
+ * this class are used to handle view rendering using a rendering engine that
  * implements the RendererInterface.
  *
  * @category    Omega

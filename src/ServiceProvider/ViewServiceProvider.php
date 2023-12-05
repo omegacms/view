@@ -25,16 +25,14 @@ use function htmlspecialchars;
 use Omega\Application\Application;
 use Omega\Helpers\Alias;
 use Omega\Renderer\AdvancedRenderer;
-use Omega\Renderer\BasicRenderer;
 use Omega\Renderer\LiteralRenderer;
-use Omega\Renderer\PhpRenderer;
 use Omega\View\ViewManager;
 
 /**
  * View service provider class.
  *
- * The `ViewServiceProvider` class provides service bindings related to the View 
- * component in the Omega system. It binds the 'view' service, which provides 
+ * The `ViewServiceProvider` class provides service bindings related to the View
+ * component in the Omega system. It binds the 'view' service, which provides
  * access to the ViewManager for rendering views.
  *
  * @category    Omega
@@ -110,14 +108,10 @@ class ViewServiceProvider
      */
     private function bindRenderer( Application $application, ViewManager $viewManager ) : void
     {
-        $application->bind( 'view.renderer.basic', fn() => new BasicRenderer() );
         $application->bind( 'view.renderer.advanced', fn() => new AdvancedRenderer() );
-        $application->bind( 'view.renderer.php', fn() => new PhpRenderer() );
         $application->bind( 'view.renderer.literal', fn() => new LiteralRenderer() );
 
-        $viewManager->addRenderer( 'basic.php', $application->resolve( 'view.renderer.basic' ) );
         $viewManager->addRenderer( 'advanced.php', $application->resolve( 'view.renderer.advanced' ) );
-        $viewManager->addRenderer( 'php', $application->resolve( 'view.renderer.php' ) );
         $viewManager->addRenderer( 'svg', $application->resolve( 'view.renderer.literal' ) );
     }
 }
