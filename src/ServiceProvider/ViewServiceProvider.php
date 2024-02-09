@@ -22,8 +22,8 @@ namespace Omega\View\ServiceProvider;
  * @use
  */
 use function htmlspecialchars;
+use function Omega\Helpers\view;
 use Omega\Application\Application;
-use Omega\Helpers\Alias;
 use Omega\Renderer\AdvancedRenderer;
 use Omega\Renderer\LiteralRenderer;
 use Omega\View\ViewManager;
@@ -94,7 +94,7 @@ class ViewServiceProvider
     private function bindMacros( Application $application, ViewManager $viewManager ) : void
     {
         $viewManager->addMacro( 'escape', fn( $value ) => @htmlspecialchars( $value, ENT_QUOTES ) );
-        $viewManager->addMacro( 'includes', fn( ...$params ) => print Alias::view( ...$params ) );
+        $viewManager->addMacro( 'includes', fn( ...$params ) => print view( ...$params ) );
     }
 
     /**
