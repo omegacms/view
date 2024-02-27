@@ -56,7 +56,7 @@ class ViewServiceProvider
      */
     public function bind( Application $application ) : void
     {
-        $application->bind( 'view', function ( $application ) {
+        $application->alias( 'view', function ( $application ) {
             $viewManager = new ViewManager();
 
             $this->bindPaths( $application, $viewManager );
@@ -108,8 +108,8 @@ class ViewServiceProvider
      */
     private function bindRenderer( Application $application, ViewManager $viewManager ) : void
     {
-        $application->bind( 'view.renderer.advanced', fn() => new AdvancedRenderer() );
-        $application->bind( 'view.renderer.literal', fn() => new LiteralRenderer() );
+        $application->alias( 'view.renderer.advanced', fn() => new AdvancedRenderer() );
+        $application->alias( 'view.renderer.literal', fn() => new LiteralRenderer() );
 
         $viewManager->addRenderer( 'advanced.php', $application->resolve( 'view.renderer.advanced' ) );
         $viewManager->addRenderer( 'svg', $application->resolve( 'view.renderer.literal' ) );
