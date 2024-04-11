@@ -103,7 +103,7 @@ class ViewManager
     {
         foreach ( $this->renderers as $extension => $renderer ) {
             foreach ( $this->paths as $path ) {
-                $file = "{$path}/{$template}.{$extension}";
+                $file = "$path/$template.$extension";
 
                 if ( is_file( $file ) ) {
                     return new View( $renderer, realpath( $file ), $data );
@@ -112,7 +112,7 @@ class ViewManager
         }
 
         throw new Exception(
-            "Could not resolve '{$template}'"
+            "Could not resolve '$template'"
         );
     }
 
@@ -147,7 +147,7 @@ class ViewManager
         }
 
         throw new Exception(
-            "Macro isn't defined: '{$name}'"
+            "Macro isn't defined: '$name'"
         );
     }
 }

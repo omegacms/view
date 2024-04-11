@@ -78,7 +78,7 @@ class ViewServiceProvider
      */
     private function bindPaths( Application $application, ViewManager $viewManager ) : void
     {
-        $viewManager->addPath( $application->resolve( 'paths.base' ) . '/resources/views' );
+        $viewManager->addPath( $application->resolve( 'paths.base' ) . '/resources/views'  );
         $viewManager->addPath( $application->resolve( 'paths.base' ) . '/resources/images' );
     }
 
