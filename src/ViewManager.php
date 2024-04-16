@@ -139,7 +139,7 @@ class ViewManager
      * @return mixed Returns the result of executing the specified macro.
      * @throws Exception if the specified macro is not defined.
      */
-    public function useMacro( string $name, ...$values ) : mixed
+    public function useMacro( string $name, mixed ...$values ) : mixed
     {
         if ( isset( $this->macros[ $name ] ) ) {
             $bound = $this->macros[ $name ]->bindTo( $this );
