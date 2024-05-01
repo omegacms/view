@@ -108,10 +108,10 @@ class ViewServiceProvider
      */
     private function bindRenderer( Application $application, ViewManager $viewManager ) : void
     {
-        $application->alias( 'view.renderer.advanced', fn() => new AdvancedRenderer() );
-        $application->alias( 'view.renderer.literal', fn() => new LiteralRenderer() );
+        $application->alias( 'view.renderer.nexus',   fn() => new AdvancedRenderer() );
+        $application->alias( 'view.renderer.literal', fn() => new LiteralRenderer()  );
 
-        $viewManager->addRenderer( 'advanced.php', $application->resolve( 'view.renderer.advanced' ) );
+        $viewManager->addRenderer( 'nexus.php', $application->resolve( 'view.renderer.nexus' ) );
         $viewManager->addRenderer( 'svg', $application->resolve( 'view.renderer.literal' ) );
     }
 }
