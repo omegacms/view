@@ -25,7 +25,9 @@ use function htmlspecialchars;
 use function Omega\Helpers\view;
 use Omega\Application\Application;
 use Omega\Renderer\AdvancedRenderer;
+use Omega\Renderer\BasicRenderer;
 use Omega\Renderer\LiteralRenderer;
+use Omega\Renderer\PhpRenderer;
 use Omega\View\ViewManager;
 
 /**
@@ -108,10 +110,14 @@ class ViewServiceProvider
      */
     private function bindRenderer( Application $application, ViewManager $viewManager ) : void
     {
+        $application->alias( 'view.renderer.basic',   fn() => new BasicRenderer()    );
         $application->alias( 'view.renderer.nexus',   fn() => new AdvancedRenderer() );
+        $application->alias( 'view.renderer.php',     fn() => new PhpRenderer()      );
         $application->alias( 'view.renderer.literal', fn() => new LiteralRenderer()  );
 
-        $viewManager->addRenderer( 'nexus.php', $application->resolve( 'view.renderer.nexus' ) );
-        $viewManager->addRenderer( 'svg', $application->resolve( 'view.renderer.literal' ) );
+        $viewManager->addRenderer( 'basic.php', $application->resolve( 'view.renderer.basic'   ) );
+        $viewManager->addRenderer( 'nexus.php', $application->resolve( 'view.renderer.nexus'   ) );
+        $viewManager->addRenderer( 'php',       $application->resolve( 'view.renderer.php'     ) );
+        $viewManager->addRenderer( 'svg',       $application->resolve( 'view.renderer.literal' ) );
     }
 }
