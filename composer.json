@@ -15,8 +15,7 @@
   ],
   "require": {
     "php": ">=8.2",
-    "omegacms/application": "^1.0.0",
-    "omegacms/renderer": "^1.0.0"
+    "omegacms/application": "^1.0.0"
   },
   "require-dev": {
     "omegacms/testing": "^1.0.0",
