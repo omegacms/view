@@ -63,7 +63,7 @@ class ViewServiceProvider
 
             $this->bindPaths( $application, $viewManager );
             $this->bindMacros( $application, $viewManager );
-            $this->bindRenderer( $application, $viewManager );
+            $this->bindEngine( $application, $viewManager );
 
             return $viewManager;
         } );
@@ -108,16 +108,16 @@ class ViewServiceProvider
      * @param  ViewManager $viewManager Holds an instance of ViewManager.
      * @return void
      */
-    private function bindRenderer( Application $application, ViewManager $viewManager ) : void
+    private function bindEngine( Application $application, ViewManager $viewManager ) : void
     {
         $application->alias( 'view.engine.basic',   fn() => new BasicEngine()    );
         $application->alias( 'view.engine.nexus',   fn() => new AdvancedEngine() );
         $application->alias( 'view.engine.php',     fn() => new PhpEngine()      );
         $application->alias( 'view.engine.literal', fn() => new LiteralEngine()  );
 
-        $viewManager->addRenderer( 'basic.php', $application->resolve( 'view.engine.basic'  ) );
-        $viewManager->addRenderer( 'nexus.php', $application->resolve( 'view.engine.nexus'   ) );
-        $viewManager->addRenderer( 'php',       $application->resolve( 'view.engine.php'     ) );
-        $viewManager->addRenderer( 'svg',       $application->resolve( 'view.engine.literal' ) );
+        $viewManager->addEngine( 'basic.php', $application->resolve( 'view.engine.basic'  ) );
+        $viewManager->addEngine( 'nexus.php', $application->resolve( 'view.engine.nexus'   ) );
+        $viewManager->addEngine( 'php',       $application->resolve( 'view.engine.php'     ) );
+        $viewManager->addEngine( 'svg',       $application->resolve( 'view.engine.literal' ) );
     }
 }

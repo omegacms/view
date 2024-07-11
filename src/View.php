@@ -21,7 +21,7 @@ namespace Omega\View;
 /**
  * @use
  */
-use Omega\Engine\EngineInterface;
+use Omega\View\Engine\EngineInterface;
 
 /**
  * View class.
