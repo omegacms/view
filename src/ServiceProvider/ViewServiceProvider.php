@@ -24,10 +24,10 @@ namespace Omega\View\ServiceProvider;
 use function htmlspecialchars;
 use function Omega\Helpers\view;
 use Omega\Application\Application;
-use Omega\Renderer\AdvancedRenderer;
-use Omega\Renderer\BasicRenderer;
-use Omega\Renderer\LiteralRenderer;
-use Omega\Renderer\PhpRenderer;
+use Omega\View\Engine\AdvancedEngine;
+use Omega\View\Engine\BasicEngine;
+use Omega\View\Engine\LiteralEngine;
+use Omega\View\Engine\PhpEngine;
 use Omega\View\ViewManager;
 
 /**
@@ -110,14 +110,14 @@ class ViewServiceProvider
      */
     private function bindRenderer( Application $application, ViewManager $viewManager ) : void
     {
-        $application->alias( 'view.renderer.basic',   fn() => new BasicRenderer()    );
-        $application->alias( 'view.renderer.nexus',   fn() => new AdvancedRenderer() );
-        $application->alias( 'view.renderer.php',     fn() => new PhpRenderer()      );
-        $application->alias( 'view.renderer.literal', fn() => new LiteralRenderer()  );
+        $application->alias( 'view.engine.basic',   fn() => new BasicEngine()    );
+        $application->alias( 'view.engine.nexus',   fn() => new AdvancedEngine() );
+        $application->alias( 'view.engine.php',     fn() => new PhpEngine()      );
+        $application->alias( 'view.engine.literal', fn() => new LiteralEngine()  );
 
-        $viewManager->addRenderer( 'basic.php', $application->resolve( 'view.renderer.basic'   ) );
-        $viewManager->addRenderer( 'nexus.php', $application->resolve( 'view.renderer.nexus'   ) );
-        $viewManager->addRenderer( 'php',       $application->resolve( 'view.renderer.php'     ) );
-        $viewManager->addRenderer( 'svg',       $application->resolve( 'view.renderer.literal' ) );
+        $viewManager->addRenderer( 'basic.php', $application->resolve( 'view.engine.basic'  ) );
+        $viewManager->addRenderer( 'nexus.php', $application->resolve( 'view.engine.nexus'   ) );
+        $viewManager->addRenderer( 'php',       $application->resolve( 'view.engine.php'     ) );
+        $viewManager->addRenderer( 'svg',       $application->resolve( 'view.engine.literal' ) );
     }
 }
