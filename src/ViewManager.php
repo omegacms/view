@@ -25,7 +25,7 @@ use function array_push;
 use function is_file;
 use Closure;
 use Exception;
-use Omega\Renderer\RendererInterface;
+use Omega\View\Engine\EngineInterface;
 
 /**
  * View manager class.
@@ -50,11 +50,11 @@ class ViewManager
     protected array $paths = [];
 
     /**
-     * Renderer engine.
+     * Engines engine.
      *
-     * @var array $renderers Holds an array of renderer engines associated with file extensions.
+     * @var array $enginess Holds an array of engines associated with file extensions.
      */
-    protected array $renderers = [];
+    protected array $enginess = [];
 
     /**
      * Macros.
@@ -77,16 +77,16 @@ class ViewManager
     }
 
     /**
-     * Add a renderer engine for a specific file extension.
+     * Add a engine for a specific file extension.
      *
-     * @param  string            $extension Holds the file extension (e.g., 'php', 'html').
-     * @param  RendererInterface $renderer  Holds an instance of the renderer engine.
+     * @param  string          $extension Holds the file extension (e.g., 'php', 'html').
+     * @param  EngineInterface $engine    Holds an instance of the engine.
      * @return $this
      */
-    public function addRenderer( string $extension, RendererInterface $renderer ) : static
+    public function addEngine( string $extension, EngineInterface $engine ) : static
     {
-        $this->renderers[ $extension ] = $renderer;
-        $this->renderers[ $extension ]->setManager( $this );
+        $this->engines[ $extension ] = $engine;
+        $this->engines[ $extension ]->setManager( $this );
 
         return $this;
     }
@@ -101,12 +101,12 @@ class ViewManager
      */
     public function render( string $template, array $data = [] ) : View
     {
-        foreach ( $this->renderers as $extension => $renderer ) {
+        foreach ( $this->engines as $extension => $engine ) {
             foreach ( $this->paths as $path ) {
                 $file = "$path/$template.$extension";
 
                 if ( is_file( $file ) ) {
-                    return new View( $renderer, realpath( $file ), $data );
+                    return new View( $engine, realpath( $file ), $data );
                 }
             }
         }

@@ -21,7 +21,7 @@ namespace Omega\View;
 /**
  * @use
  */
-use Omega\Renderer\RendererInterface;
+use Omega\Engine\EngineInterface;
 
 /**
  * View class.
@@ -32,6 +32,7 @@ use Omega\Renderer\RendererInterface;
  *
  * @category    Omega
  * @package     Omega\View
+ * @subpackage  Omega\View\Engine
  * @link        https://omegacms.github.io
  * @author      Adriano Giovannini <omegacms@outlook.com>
  * @copyright   Copyright (c) 2022 Adriano Giovannini. (https://omegacms.github.io)
@@ -47,7 +48,7 @@ class View
      * @param  string            $path     Holds the view path
      * @param  array             $data     Holds an array of date for rendering the view.
      */
-    public function __construct( protected RendererInterface $renderer, public string $path, public array $data = [] )
+    public function __construct( protected EngineInterface $engine, public string $path, public array $data = [] )
     {
     }
 
@@ -58,6 +59,6 @@ class View
      */
     public function __toString() : string
     {
-        return $this->renderer->render( $this );
+        return $this->engine->render( $this );
     }
 }
