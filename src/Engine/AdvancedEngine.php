@@ -35,8 +35,6 @@ use function ob_start;
 use function preg_replace_callback;
 use function realpath;
 use function touch;
-use function Omega\Helpers\get_storage_path;
-use function Omega\Helpers\view;
 use Exception;
 use Omega\View\View;
 

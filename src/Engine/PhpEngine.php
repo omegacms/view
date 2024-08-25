@@ -22,7 +22,6 @@ namespace Omega\View\Engine;
  * @use
  */
 use function array_merge;
-use function Omega\Helpers\view;
 use Omega\View\View;
 
 /**

@@ -22,7 +22,6 @@ namespace Omega\View\ServiceProvider;
  * @use
  */
 use function htmlspecialchars;
-use function Omega\Helpers\view;
 use Omega\Application\Application;
 use Omega\View\Engine\AdvancedEngine;
 use Omega\View\Engine\BasicEngine;
