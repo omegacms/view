@@ -54,7 +54,7 @@ class ViewManager
      *
      * @var array $enginess Holds an array of engines associated with file extensions.
      */
-    protected array $enginess = [];
+    protected array $engines = [];
 
     /**
      * Macros.
