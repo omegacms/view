@@ -24,6 +24,7 @@ namespace Omega\View\Engine;
 use function debug_backtrace;
 use function realpath;
 use Omega\View\View;
+use Exception;
 
 /**
  * Abstract engine class.

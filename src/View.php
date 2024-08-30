@@ -44,13 +44,15 @@ class View
     /**
      * View class constructor.
      *
-     * @param  RendererInterface $renderer Holds an instance of Renderer.
-     * @param  string            $path     Holds the view path
-     * @param  array             $data     Holds an array of date for rendering the view.
+     * @param  EngineInterface $engine Holds an instance of Renderer.
+     * @param  string           $path   Holds the view path
+     * @param  array            $data   Holds an array of date for rendering the view.
      */
-    public function __construct( protected EngineInterface $engine, public string $path, public array $data = [] )
-    {
-    }
+    public function __construct( 
+        protected EngineInterface $engine, 
+        public string $path, 
+        public array $data = [] 
+    ) {}
 
     /**
      * Magic to string.
