@@ -23,11 +23,13 @@ namespace Omega\View\ServiceProvider;
  */
 use function htmlspecialchars;
 use Omega\Application\Application;
+use Omega\Container\ServiceProvider\ServiceProviderInterface;
+use Omega\Support\Facades\View;
+use Omega\View\ViewManager;
 use Omega\View\Engine\AdvancedEngine;
 use Omega\View\Engine\BasicEngine;
 use Omega\View\Engine\LiteralEngine;
 use Omega\View\Engine\PhpEngine;
-use Omega\View\ViewManager;
 
 /**
  * View service provider class.
@@ -37,15 +39,15 @@ use Omega\View\ViewManager;
  * access to the ViewManager for rendering views.
  *
  * @category    Omega
- * @package     Omega\View
- * @subpackage  Omega\View\ServiceProvider
+ * @package     View
+ * @subpackage  ServiceProvider
  * @link        https://omegacms.github.io
  * @author      Adriano Giovannini <omegacms@outlook.com>
  * @copyright   Copyright (c) 2024 Adriano Giovannini. (https://omegacms.github.io)
  * @license     https://www.gnu.org/licenses/gpl-3.0-standalone.html     GPL V3.0+
  * @version     1.0.0
  */
-class ViewServiceProvider
+class ViewServiceProvider implements ServiceProviderInterface
 {
     /**
      * Binding all view functions.
@@ -95,7 +97,7 @@ class ViewServiceProvider
     private function bindMacros( Application $application, ViewManager $viewManager ) : void
     {
         $viewManager->addMacro( 'escape', fn( $value ) => @htmlspecialchars( $value, ENT_QUOTES ) );
-        $viewManager->addMacro( 'includes', fn( ...$params ) => print view( ...$params ) );
+        $viewManager->addMacro( 'includes', fn( ...$params ) => print View::render( ...$params ) );
     }
 
     /**

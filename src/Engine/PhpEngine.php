@@ -22,7 +22,7 @@ namespace Omega\View\Engine;
  * @use
  */
 use function array_merge;
-use Omega\View\View;
+use Omega\Support\Facades\View;
 
 /**
  * Php engine class.
@@ -43,10 +43,10 @@ class PhpEngine extends AbstractEngine
      *
      * This method is responsible for rendering a View object and processing its contents.
      *
-     * @param  View $view Holds an instance of View.
+     * @param  \Omega\View\View $view Holds an instance of View.
      * @return string Return the view.
      */
-    public function render( View $view ) : string
+    public function render( \Omega\View\View $view ) : string
     {
         extract( $view->data );
 
@@ -56,7 +56,7 @@ class PhpEngine extends AbstractEngine
         ob_end_clean();
 
         if ( $layout = $this->layouts[ $view->path ] ?? null ) {
-            $contentsWithLayout = view( $layout, array_merge(
+            $contentsWithLayout = View::render( $layout, array_merge(
                 $view->data,
                 [ 'contents' => $contents ],
             ) );

@@ -35,8 +35,7 @@ use function ob_start;
 use function preg_replace_callback;
 use function realpath;
 use function touch;
-use Exception;
-use Omega\View\View;
+use Omega\Support\Facades\View;
 
 /**
  * Advanced engine class.
@@ -58,10 +57,10 @@ class AdvancedEngine extends AbstractEngine
     /**
      * @inheritdoc
      *
-     * @param  View $view Holds an instance of View.
+     * @param  \Omega\View\View $view Holds an instance of View.
      * @return string Return the view.
      */
-    public function render( View $view ) : string
+    public function render( \Omega\View\View $view ) : string
     {
         $hash   = md5( $view->path );
         $folder = get_storage_path( 'framework/data/views' );
@@ -85,7 +84,7 @@ class AdvancedEngine extends AbstractEngine
         ob_end_clean();
 
         if ( $layout = $this->layouts[ $cached ] ?? null ) {
-            $layoutView = view( $layout, array_merge(
+            $layoutView = View::render( $layout, array_merge(
                 $view->data,
                 [ 'contents' => $contents ],
             ) );
