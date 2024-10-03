@@ -35,7 +35,7 @@ use function ob_start;
 use function preg_replace_callback;
 use function realpath;
 use function touch;
-use Omega\Support\Facades\View;
+use Omega\Support\Facade\Facades\View;
 
 /**
  * Advanced engine class.

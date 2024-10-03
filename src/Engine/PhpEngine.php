@@ -22,7 +22,7 @@ namespace Omega\View\Engine;
  * @use
  */
 use function array_merge;
-use Omega\Support\Facades\View;
+use Omega\Support\Facade\Facades\View;
 
 /**
  * Php engine class.
