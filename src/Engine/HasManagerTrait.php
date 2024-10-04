@@ -30,7 +30,8 @@ use Omega\View\ViewManager;
  * to manage view-related functionality within rendering classes.
  *
  * @category    Omega
- * @package     Omega\Renderer
+ * @package     View
+ * @subpackage  Engine
  * @link        https://omegacms.github.io
  * @author      Adriano Giovannini <omegacms@outlook.com>
  * @copyright   Copyright (c) 2024 Adriano Giovannini. (https://omegacms.github.io)

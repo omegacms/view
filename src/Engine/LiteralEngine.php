@@ -31,8 +31,8 @@ use Omega\View\View;
  * It directly returns the contents of the view file without any processing.
  *
  * @category    Omega
- * @package     Omega\View
- * @subpackage  Omega\View\Engine
+ * @package     View
+ * @subpackage  Engine
  * @link        https://omegacms.github.io
  * @author      Adriano Giovannini <omegacms@outlook.com>
  * @copyright   Copyright (c) 2024 Adriano Giovannini. (https://omegacms.github.io)

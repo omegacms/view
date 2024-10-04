@@ -32,8 +32,8 @@ use Omega\View\ViewManager;
  * object and allow setting the ViewManager to be used for rendering.
  *
  * @category    Omega
- * @package     Omega\View
- * @subpackage  Omega\View\Engine
+ * @package     View
+ * @subpackage  Engine
  * @link        https://omegacms.github.io1
  * @author      Adriano Giovannini <omegacms@outlook.com>
  * @copyright   Copyright (c) 2024 Adriano Giovannini. (https://omegacms.github.io)
